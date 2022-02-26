@@ -388,6 +388,8 @@ inline void control_contactor_coil(contactor_request_t request)
 inline void contactor_init(void)
 {
     set_bit(CONTACTOR_DDR, CONTACTOR_FORWARD_COIL);
+    set_bit(CONTACTOR_DDR, CONTACTOR_REVERSE_COIL);
+    clr_bit(CONTACTOR_PORT, CONTACTOR_FORWARD_COIL);
     clr_bit(CONTACTOR_PORT, CONTACTOR_REVERSE_COIL);
 }
 
