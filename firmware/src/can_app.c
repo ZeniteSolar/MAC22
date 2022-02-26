@@ -71,7 +71,7 @@ inline void can_app_extractor_mam19_state(can_t *msg)
 {
     // TODO:
     //  - se tiver em erro, desligar acionamento
-    if(msg->data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] == CAN_SIGNATURE_MIC19){
+    if(msg->data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] == CAN_SIGNATURE_MAM19){
         can_app_checks_without_mam19_msg = 0;
         if(msg->data[CAN_MSG_GENERIC_STATE_ERROR_BYTE]){
             //ERROR!!!
@@ -113,7 +113,7 @@ inline void can_app_send_contactor_response(uint8_t response)
  */
 inline void can_app_msg_extractors_switch(can_t *msg)
 {
-    if(msg->data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] == CAN_SIGNATURE_MIC19){
+    if(msg->data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] == CAN_SIGNATURE_MAM19){
         switch(msg->id){
             case CAN_MSG_MAM19_STATE_ID:
 #ifdef USART_ON

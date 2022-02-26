@@ -27,6 +27,7 @@
 //#define PRINT_INFOS
 
 #define CAN_SIGNATURE_SELF      CAN_SIGNATURE_MAC22
+#define CAN_MASK                0b11111111111
 
 // MODULES ACTIVATION
 #define USART_ON

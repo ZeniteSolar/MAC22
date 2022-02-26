@@ -114,8 +114,6 @@ inline void print_configurations(void)
 {
     VERBOSE_MSG_MACHINE(usart_send_string("CONFIGURATIONS:\n"));
 
-    VERBOSE_MSG_MACHINE(usart_send_string("\nadc_f: "));
-    VERBOSE_MSG_MACHINE(usart_send_uint16( ADC_FREQUENCY ));
     VERBOSE_MSG_MACHINE(usart_send_string("\nmachine_f: "));
     VERBOSE_MSG_MACHINE(usart_send_uint16( MACHINE_FREQUENCY ));
 
@@ -136,8 +134,8 @@ inline void print_system_flags(void)
 */
 inline void print_error_flags(void)
 {
-    //VERBOSE_MSG_MACHINE(usart_send_string(" errFl: "));
-    //VERBOSE_MSG_MACHINE(usart_send_char(48+error_flags.no_canbus));
+    VERBOSE_MSG_MACHINE(usart_send_string(" errFl: "));
+    VERBOSE_MSG_MACHINE(usart_send_char(48+error_flags.no_canbus));
 }
 
 /**
@@ -212,7 +210,7 @@ inline void task_error(void)
     VERBOSE_MSG_ERROR(usart_send_char('\n'));
 
     if(error_flags.no_canbus)
-        VERBOSE_MSG_ERROR(usart_send_string("\t - No canbus communication with MIC19!\n"));
+        VERBOSE_MSG_ERROR(usart_send_string("\t - No canbus communication with MAM19!\n"));
     if(!error_flags.all)
         VERBOSE_MSG_ERROR(usart_send_string("\t - Oh no, it was some unknown error.\n"));
 
