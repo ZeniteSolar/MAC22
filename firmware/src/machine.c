@@ -62,6 +62,13 @@ inline void set_machine_initial_state(void)
     machine_clk = machine_clk_divider = led_clk_div = 0;
 }
 
+inline void reset_contactor(void)
+{
+    control_contactor_coil(CONTACTOR_REQUEST_TURN_OFF);
+    contactor.request = CONTACTOR_REQUEST_UNKNOWN;
+    contactor.request_available = 0;
+}
+
 /**
  * @brief set error state
  */
@@ -69,6 +76,7 @@ inline void set_state_error(void)
 {
     VERBOSE_MSG_MACHINE(usart_send_string("\n>>>STATE ERROR\n"));
     state_machine = STATE_ERROR;
+    reset_contactor();
 }
 
 /**
@@ -78,6 +86,7 @@ inline void set_state_initializing(void)
 {
     VERBOSE_MSG_MACHINE(usart_send_string("\n>>>INITIALIZING STATE\n"));
     state_machine = STATE_INITIALIZING;
+    reset_contactor();
 }
 
 /**
@@ -87,6 +96,7 @@ inline void set_state_idle(void)
 {
     VERBOSE_MSG_MACHINE(usart_send_string("\n>>>IDLE STATE\n"));
     state_machine = STATE_IDLE;
+    reset_contactor();
 }
 
 /**
@@ -105,6 +115,7 @@ inline void set_state_reset(void)
 {
     VERBOSE_MSG_MACHINE(usart_send_string("\n>>>RESET STATE\n"));
     state_machine = STATE_RESET;
+    reset_contactor();
 }
 
 /**
