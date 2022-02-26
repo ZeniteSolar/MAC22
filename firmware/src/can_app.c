@@ -71,7 +71,7 @@ inline void can_app_extractor_mam19_state(can_t *msg)
 {
     // TODO:
     //  - se tiver em erro, desligar acionamento
-    if(msg->data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] == CAN_SIGNATURE_MIC19){
+    if(msg->data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] == CAN_SIGNATURE_MAM19){
         can_app_checks_without_mam19_msg = 0;
         if(msg->data[CAN_MSG_GENERIC_STATE_ERROR_BYTE]){
             //ERROR!!!
